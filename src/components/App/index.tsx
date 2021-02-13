@@ -1,33 +1,10 @@
 import React, { useEffect, useReducer } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import "./App.scss";
-export interface IAQIData {
-  city: string;
-  aqi: number;
-}
-
-type Action = { type: "update"; payload: IAQIData[] };
-type TCityData = Record<string, number>;
-
-const initialState: TCityData = {};
-const reducer = (state: TCityData, action: Action) => {
-  switch (action.type) {
-    case "update":
-      return { ...state, ..._toObject(action.payload) };
-    default:
-      return state;
-  }
-};
-
-const _toObject = (data: IAQIData[]) => {
-  return data.reduce<Record<string, number>>((prev, curr) => {
-    prev[curr.city] = curr.aqi;
-    return prev;
-  }, {});
-};
+import { aqiReducer, IAQIData } from "../../redux/aqiReducer";
 
 export default function App() {
-  const [data, dispatch] = useReducer(reducer, initialState);
+  const [data, dispatch] = useReducer(aqiReducer, {});
 
   useEffect(() => {
     const client = new W3CWebSocket("wss://city-ws.herokuapp.com");
