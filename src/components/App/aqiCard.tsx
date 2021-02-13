@@ -6,15 +6,6 @@ export interface AQICardProps {
   aqi: number;
 }
 
-const category = {
-  50: "bg-good",
-  100: "bg-satisfactory",
-  200: "bg-moderate",
-  300: "bg-poor",
-  400: "bg-very-poor",
-  500: "bg-severe",
-};
-
 const getCategory = (val: number) => {
   return val <= 50
     ? "good"
@@ -31,10 +22,12 @@ const getCategory = (val: number) => {
 
 const AQICard: React.FC<AQICardProps> = React.memo((props) => {
   return (
-    <div className={`card bg-${getCategory(props.aqi)}`}>
+    <div className="card">
       <div className="card-body">
         <div>
-          <div className="text-lg">{props.aqi.toFixed(2)}</div>
+          <div className={`text-lg bg-${getCategory(props.aqi)}`}>
+            {props.aqi.toFixed(2)}
+          </div>
           <div>{capitalize(props.name)}</div>
         </div>
       </div>

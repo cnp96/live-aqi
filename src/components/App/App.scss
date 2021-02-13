@@ -1,19 +1,48 @@
+$good: #46c43a;
+$satisfactory: #295939;
+$moderate: #ffcc29;
+$poor: #ff7b54;
+$very-poor: #d32626;
+$severe: #b90c0c;
+$white: #fff;
+$black: #000;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes square {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-700px) rotate(600deg);
+  }
+}
 .app {
   padding: 1em;
   text-align: center;
-  background: linear-gradient(45deg, #eee, #fff) !important;
+  background: linear-gradient(-45deg, #fcd1d1, #ece2e1, #d3e0dc, #aee1e1);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   height: 100vh;
-}
-.overview {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  .overview {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .card {
-  border: 1px solid;
-  box-shadow: 2px 1px 3px rgb(180, 180, 180), 0px 1px 3px rgb(180, 180, 180);
-  border-radius: 2px;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 4px #ddd, 0px 3px 4px #ddd;
+  background: linear-gradient(45deg, #f0f0f0, #fff);
+  border-radius: 4px;
   width: 200px;
   height: 100px;
   cursor: pointer;
@@ -21,35 +50,23 @@
   color: #222;
   transition: 300ms ease-in-out;
 
-  &.bg-good {
-    background: linear-gradient(45deg, #46c43a, #3ba331) !important;
-    border-color: #46c43a !important;
-    color: #fff !important;
+  .bg-good {
+    color: $good;
   }
-  &.bg-satisfactory {
-    background: linear-gradient(45deg, #295939, #1d3f28) !important;
-    border-color: #295939 !important;
-    color: #fff !important;
+  .bg-satisfactory {
+    color: $satisfactory;
   }
-  &.bg-moderate {
-    background: linear-gradient(45deg, #ffcc29 0%, #fac003 100%) !important;
-    border-color: #ffcc29 !important;
-    color: #000;
+  .bg-moderate {
+    color: $moderate;
   }
-  &.bg-poor {
-    background: linear-gradient(45deg, #ff7b54 0%, #e4633c 100%) !important;
-    border-color: #ff7b54 !important;
-    color: #000;
+  .bg-poor {
+    color: $poor;
   }
-  &.bg-very-poor {
-    background: linear-gradient(45deg, #d54062 0%, #c41f46 100%) !important;
-    border-color: #d54062 !important;
-    color: #fff;
+  .bg-very-poor {
+    color: $very-poor;
   }
-  &.bg-severe {
-    background: linear-gradient(45deg, #c70039 0%, #a50431 100%) !important;
-    border-color: #c70039 !important;
-    color: #fff;
+  .bg-severe {
+    color: $severe;
   }
   .card-body {
     padding: 0.5em;
