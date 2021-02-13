@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/live-aqi/static/css/main.e32cfcbe.chunk.css",
-    "main.js": "/live-aqi/static/js/main.e4123df0.chunk.js",
-    "main.js.map": "/live-aqi/static/js/main.e4123df0.chunk.js.map",
+    "main.css": "/live-aqi/static/css/main.466a0aa6.chunk.css",
+    "main.js": "/live-aqi/static/js/main.f71ec821.chunk.js",
+    "main.js.map": "/live-aqi/static/js/main.f71ec821.chunk.js.map",
     "runtime-main.js": "/live-aqi/static/js/runtime-main.bb52d115.js",
     "runtime-main.js.map": "/live-aqi/static/js/runtime-main.bb52d115.js.map",
     "static/js/2.fdea0608.chunk.js": "/live-aqi/static/js/2.fdea0608.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.138774d7.chunk.js": "/live-aqi/static/js/3.138774d7.chunk.js",
     "static/js/3.138774d7.chunk.js.map": "/live-aqi/static/js/3.138774d7.chunk.js.map",
     "index.html": "/live-aqi/index.html",
-    "static/css/main.e32cfcbe.chunk.css.map": "/live-aqi/static/css/main.e32cfcbe.chunk.css.map",
+    "static/css/main.466a0aa6.chunk.css.map": "/live-aqi/static/css/main.466a0aa6.chunk.css.map",
     "static/js/2.fdea0608.chunk.js.LICENSE.txt": "/live-aqi/static/js/2.fdea0608.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bb52d115.js",
     "static/js/2.fdea0608.chunk.js",
-    "static/css/main.e32cfcbe.chunk.css",
-    "static/js/main.e4123df0.chunk.js"
+    "static/css/main.466a0aa6.chunk.css",
+    "static/js/main.f71ec821.chunk.js"
   ]
 }
