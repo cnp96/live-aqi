@@ -1,38 +1,64 @@
-.App {
+.app {
+  padding: 1em;
   text-align: center;
+  background: linear-gradient(45deg, #eee, #fff) !important;
+  height: 100vh;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.overview {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.card {
+  border: 1px solid;
+  box-shadow: 2px 1px 3px rgb(180, 180, 180), 0px 1px 3px rgb(180, 180, 180);
+  border-radius: 2px;
+  width: 200px;
+  height: 100px;
+  cursor: pointer;
+  margin: 1em;
+  color: #222;
+  transition: 300ms ease-in-out;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  &.bg-good {
+    background: linear-gradient(45deg, #46c43a, #3ba331) !important;
+    border-color: #46c43a !important;
+    color: #fff !important;
   }
-  to {
-    transform: rotate(360deg);
+  &.bg-satisfactory {
+    background: linear-gradient(45deg, #295939, #1d3f28) !important;
+    border-color: #295939 !important;
+    color: #fff !important;
+  }
+  &.bg-moderate {
+    background: linear-gradient(45deg, #ffcc29 0%, #fac003 100%) !important;
+    border-color: #ffcc29 !important;
+    color: #000;
+  }
+  &.bg-poor {
+    background: linear-gradient(45deg, #ff7b54 0%, #e4633c 100%) !important;
+    border-color: #ff7b54 !important;
+    color: #000;
+  }
+  &.bg-very-poor {
+    background: linear-gradient(45deg, #d54062 0%, #c41f46 100%) !important;
+    border-color: #d54062 !important;
+    color: #fff;
+  }
+  &.bg-severe {
+    background: linear-gradient(45deg, #c70039 0%, #a50431 100%) !important;
+    border-color: #c70039 !important;
+    color: #fff;
+  }
+  .card-body {
+    padding: 0.5em;
+    .text-lg {
+      font-size: 2em;
+      & + div {
+        padding-top: 0.5em;
+        font-size: 1.3em;
+      }
+    }
   }
 }

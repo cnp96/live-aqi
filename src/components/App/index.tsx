@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import "./App.scss";
 import { aqiReducer, IAQIData } from "../../redux/aqiReducer";
+import AQICard from "./aqiCard";
 
 export default function App() {
   const [data, dispatch] = useReducer(aqiReducer, {});
@@ -26,28 +27,13 @@ export default function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Live Air Quality Monitoring</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Index</th>
-            <th>City</th>
-            <th>Quality</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(data).map(([city, aqi], index) => {
-            return (
-              <tr key={index}>
-                <td>{index}</td>
-                <td>{city}</td>
-                <td>{aqi.toFixed(2)}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="app">
+      <h1>Air Quality Index</h1>
+      <div className="overview">
+        {Object.entries(data).map(([city, aqi], index) => {
+          return <AQICard key={index} name={city} aqi={aqi} />;
+        })}
+      </div>
     </div>
   );
 }
