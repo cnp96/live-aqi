@@ -44,15 +44,19 @@ export default function App() {
     };
   }, []);
 
+  // Sort based on AQI value
+  const cityData = Object.entries(data).sort((s, f) => (s[1] < f[1] ? -1 : 1));
   return (
     <div className="app">
       <h1>Air Quality Index</h1>
       <div className="overview">
-        {Object.entries(data)
-          .sort((s, f) => (s[1] < f[1] ? -1 : 1))
-          .map(([city, aqi], index) => {
+        {cityData.length ? (
+          cityData.map(([city, aqi], index) => {
             return <AQICard key={index} name={city} aqi={aqi} />;
-          })}
+          })
+        ) : (
+          <div className="w-100 d-flex justify-center">Please wait...</div>
+        )}
       </div>
     </div>
   );
