@@ -21,6 +21,9 @@ Live page: https://cnp96.github.io/live-aqi/
 - [x] Added live chart for AQI data per city
 
 > It took approximately 14-15 hours to build the project because I ran into some issues with chart.js
+
+![Screenshot](./.gitassets/live-aqi.png "Screenshot")
+
 ## Available Scripts
 
 In the project directory, you can run:
