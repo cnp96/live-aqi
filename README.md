@@ -2,6 +2,8 @@
 
 Air quality index data visualization for different cities
 
+Live page: https://cnp96.github.io/live-aqi/
+
 ## Development Duration
 ### Day 1
 - [x] Initialize boilerplate
