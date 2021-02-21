@@ -1,11 +1,14 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { aqiReducer, IAQIData } from "../../redux/aqiReducer";
+import LineChart from "../Charts/line";
 import "./App.scss";
-import AQICard from "./aqiCard";
+import AQITable from "./table";
 
 export default function App() {
   const [data, dispatch] = useReducer(aqiReducer, {});
+  const [compare, setCompare] = useState<string[]>([]);
+
   let client: W3CWebSocket;
   const connect = () => {
     client = new W3CWebSocket("wss://city-ws.herokuapp.com");
@@ -36,6 +39,7 @@ export default function App() {
     return client;
   };
 
+  // Connect to socket on mount
   useEffect(() => {
     client = connect();
     return () => {
@@ -44,19 +48,16 @@ export default function App() {
     };
   }, []);
 
-  // Sort based on AQI value
-  const cityData = Object.entries(data).sort((s, f) => (s[1] < f[1] ? -1 : 1));
   return (
     <div className="app">
       <h1>Air Quality Index</h1>
       <div className="overview">
-        {cityData.length ? (
-          cityData.map(([city, aqi], index) => {
-            return <AQICard key={index} name={city} aqi={aqi} />;
-          })
-        ) : (
-          <div className="w-100 d-flex justify-center">Please wait...</div>
-        )}
+        <AQITable data={Object.entries(data)} onChange={setCompare} />
+        {compare.length ? (
+          <div className="chart">
+            <LineChart />
+          </div>
+        ) : null}
       </div>
     </div>
   );
