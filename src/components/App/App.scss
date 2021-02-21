@@ -37,6 +37,7 @@ table.styled-table {
   border-collapse: collapse;
   font-family: sans-serif;
   min-width: 400px;
+  font-size: 0.9em;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   transition: 300ms ease-in-out;
   th,
@@ -67,7 +68,6 @@ table.styled-table {
       color: #009879;
     }
     td {
-      cursor: pointer;
       &.aqi {
         font-weight: bolder;
       }
@@ -88,6 +88,23 @@ table.styled-table {
       }
       &.severe {
         color: $severe;
+      }
+      button {
+        display: inline-block;
+        padding: 0.35em 1.2em;
+        border: 0.1em solid #153e90;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.12em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-weight: 300;
+        text-align: center;
+        transition: all 0.2s;
+        cursor: pointer;
+        &:hover {
+          color: #ffffff;
+          background-color: #153e90;
+        }
       }
     }
   }

@@ -1,34 +1,30 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js";
 
-export interface LineChartProps {}
+export interface LineChartProps {
+  labels: string[];
+  data: Record<string, { x: Date; y: number }[]>;
+}
 
 const LineChart: React.FC<LineChartProps> = (props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
 
-  let chart;
+  let chart: Chart;
+  const getDataSets = (data: LineChartProps["data"]) => {
+    return Object.entries(data).map(([city, data]) => {
+      return {
+        label: city,
+        data,
+      };
+    });
+  };
+
   useEffect(() => {
     if (chartRef.current) {
       chart = new Chart(chartRef.current, {
         type: "line",
         data: {
-          labels: ["Mumbai"],
-          datasets: [
-            {
-              label: "Test",
-              data: [
-                { x: new Date(), y: 20 },
-                { x: new Date(), y: 21 },
-                { x: new Date(), y: 10 },
-                { x: new Date(), y: 15 },
-                { x: new Date(), y: 27 },
-                { x: new Date(), y: 29 },
-                { x: new Date(), y: 30 },
-                { x: new Date(), y: 40 },
-                { x: new Date(), y: 290 },
-              ],
-            },
-          ],
+          datasets: getDataSets(props.data),
         },
         options: {
           legend: {
@@ -39,6 +35,17 @@ const LineChart: React.FC<LineChartProps> = (props) => {
           },
         },
       });
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("data received", props.data);
+
+    if (chart) {
+      chart.data.datasets = getDataSets(props.data);
+      console.log("chart updated");
+
+      chart.update();
     }
   }, []);
 

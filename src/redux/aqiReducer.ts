@@ -4,20 +4,21 @@ export interface IAQIData {
 }
 
 export type Action = { type: "update"; payload: IAQIData[] };
-export type TCityData = Record<string, number>;
+export type TCityData = Record<string, { aqi: number; lastUpdated: Date }>;
 
 export const aqiReducer = (state: TCityData, action: Action) => {
   switch (action.type) {
     case "update":
-      return { ...state, ..._toObject(action.payload) };
+      const now = new Date();
+      const { payload } = action;
+      for (let data of payload) {
+        state[data.city] = {
+          aqi: data.aqi,
+          lastUpdated: now,
+        };
+      }
+      return { ...state };
     default:
       return state;
   }
-};
-
-const _toObject = (data: IAQIData[]) => {
-  return data.reduce<Record<string, number>>((prev, curr) => {
-    prev[curr.city] = curr.aqi;
-    return prev;
-  }, {});
 };
