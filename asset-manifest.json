@@ -1,22 +1,28 @@
 {
   "files": {
-    "main.css": "/live-aqi/static/css/main.b557bc79.chunk.css",
-    "main.js": "/live-aqi/static/js/main.fe09104b.chunk.js",
-    "main.js.map": "/live-aqi/static/js/main.fe09104b.chunk.js.map",
-    "runtime-main.js": "/live-aqi/static/js/runtime-main.d1004b9f.js",
-    "runtime-main.js.map": "/live-aqi/static/js/runtime-main.d1004b9f.js.map",
-    "static/js/2.ca32aa33.chunk.js": "/live-aqi/static/js/2.ca32aa33.chunk.js",
-    "static/js/2.ca32aa33.chunk.js.map": "/live-aqi/static/js/2.ca32aa33.chunk.js.map",
-    "static/js/3.916b486c.chunk.js": "/live-aqi/static/js/3.916b486c.chunk.js",
-    "static/js/3.916b486c.chunk.js.map": "/live-aqi/static/js/3.916b486c.chunk.js.map",
+    "main.css": "/live-aqi/static/css/main.ddea769b.chunk.css",
+    "main.js": "/live-aqi/static/js/main.379363ce.chunk.js",
+    "main.js.map": "/live-aqi/static/js/main.379363ce.chunk.js.map",
+    "runtime-main.js": "/live-aqi/static/js/runtime-main.24c01046.js",
+    "runtime-main.js.map": "/live-aqi/static/js/runtime-main.24c01046.js.map",
+    "static/js/2.534b6c1b.chunk.js": "/live-aqi/static/js/2.534b6c1b.chunk.js",
+    "static/js/2.534b6c1b.chunk.js.map": "/live-aqi/static/js/2.534b6c1b.chunk.js.map",
+    "static/js/3.8750fb5b.chunk.js": "/live-aqi/static/js/3.8750fb5b.chunk.js",
+    "static/js/3.8750fb5b.chunk.js.map": "/live-aqi/static/js/3.8750fb5b.chunk.js.map",
+    "static/js/4.d56a9b13.chunk.js": "/live-aqi/static/js/4.d56a9b13.chunk.js",
+    "static/js/4.d56a9b13.chunk.js.map": "/live-aqi/static/js/4.d56a9b13.chunk.js.map",
+    "static/js/5.4ff6c963.chunk.js": "/live-aqi/static/js/5.4ff6c963.chunk.js",
+    "static/js/5.4ff6c963.chunk.js.map": "/live-aqi/static/js/5.4ff6c963.chunk.js.map",
     "index.html": "/live-aqi/index.html",
-    "static/css/main.b557bc79.chunk.css.map": "/live-aqi/static/css/main.b557bc79.chunk.css.map",
-    "static/js/2.ca32aa33.chunk.js.LICENSE.txt": "/live-aqi/static/js/2.ca32aa33.chunk.js.LICENSE.txt"
+    "static/css/main.ddea769b.chunk.css.map": "/live-aqi/static/css/main.ddea769b.chunk.css.map",
+    "static/js/2.534b6c1b.chunk.js.LICENSE.txt": "/live-aqi/static/js/2.534b6c1b.chunk.js.LICENSE.txt",
+    "static/js/3.8750fb5b.chunk.js.LICENSE.txt": "/live-aqi/static/js/3.8750fb5b.chunk.js.LICENSE.txt",
+    "static/js/main.379363ce.chunk.js.LICENSE.txt": "/live-aqi/static/js/main.379363ce.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d1004b9f.js",
-    "static/js/2.ca32aa33.chunk.js",
-    "static/css/main.b557bc79.chunk.css",
-    "static/js/main.fe09104b.chunk.js"
+    "static/js/runtime-main.24c01046.js",
+    "static/js/2.534b6c1b.chunk.js",
+    "static/css/main.ddea769b.chunk.css",
+    "static/js/main.379363ce.chunk.js"
   ]
 }
