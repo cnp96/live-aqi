@@ -4,7 +4,7 @@ import { TCityData } from "../../redux/aqiReducer";
 import { formatTime } from "../../util/common";
 export interface AQITableProps {
   data: TCityData;
-  onChange?: (city: string) => void;
+  onChange?: (city?: string) => void;
 }
 
 const getCategory = (val: number) => {
@@ -25,8 +25,9 @@ const AQITable: React.FC<AQITableProps> = React.memo((props) => {
   const [selectedCity, setCity] = React.useState<string>();
 
   const onCitySelection = (city: string) => {
-    setCity(selectedCity === city ? undefined : city);
-    props.onChange && props.onChange(city);
+    const newCity = selectedCity === city ? undefined : city;
+    setCity(newCity);
+    props.onChange && props.onChange(newCity);
   };
 
   const { data } = props;

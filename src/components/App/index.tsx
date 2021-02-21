@@ -1,15 +1,35 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
-import { aqiReducer, IAQIData } from "../../redux/aqiReducer";
+import {
+  aqiHistoryReducer,
+  aqiReducer,
+  IAQIData,
+} from "../../redux/aqiReducer";
 import "./App.scss";
 import AQITable from "./table";
+const LineChart = React.lazy(() => import("../Charts/line"));
 
 export default function App() {
-  const [data, dispatch] = useReducer(aqiReducer, {});
-  const [city, setCity] = useState<string>();
+  const [data, dispatchAqi] = useReducer(aqiReducer, {});
+  const [selectedCity, setCity] = useState<string>();
+  const cityRef = useRef<string>();
+  const [aqiHistory, dispatchAqiHistory] = useReducer(aqiHistoryReducer, []);
 
-  const msgHandler = (msg: IAQIData[]) => {
-    dispatch({ type: "update", payload: msg });
+  const onMessage = (msg: IAQIData[]) => {
+    // Update redux store
+    dispatchAqi({ type: "update", payload: msg });
+
+    // Update chart
+    const cityData = msg.find((m) => m.city === cityRef.current);
+    if (cityData) {
+      dispatchAqiHistory({ type: "add", payload: cityData.aqi });
+    }
+  };
+  const onChangeCity = (city?: string) => {
+    setCity(city);
+    //! Using ref because setState op is taking a longer duration
+    cityRef.current = city;
+    dispatchAqiHistory({ type: "clear" });
   };
 
   let client: W3CWebSocket;
@@ -32,7 +52,7 @@ export default function App() {
         const retry = setInterval(() => {
           if (client.readyState === 3) {
             console.log("Reconnecting to server");
-            client = connect(msgHandler);
+            client = connect(onMessage);
           } else {
             clearInterval(retry);
           }
@@ -44,7 +64,7 @@ export default function App() {
 
   // Connect to socket on mount
   useEffect(() => {
-    client = connect(msgHandler);
+    client = connect(onMessage);
     return () => {
       client.close(3000);
       console.log("Client disconnected");
@@ -53,13 +73,16 @@ export default function App() {
 
   return (
     <main>
-      <h1>Air Quality Index</h1>
+      {/* <h2>Air Quality Index</h2> */}
       <div className="overview">
-        <AQITable data={data} onChange={setCity} />
-
-        {/* <div className="chart">
-          <LineChart labels={Object.keys(compareCities)} data={aqiHistory} />
-        </div> */}
+        <AQITable data={data} onChange={onChangeCity} />
+        {selectedCity ? (
+          <div className="chart">
+            <React.Suspense fallback="Loading chart...">
+              <LineChart label={selectedCity} data={aqiHistory} />
+            </React.Suspense>
+          </div>
+        ) : null}
       </div>
     </main>
   );
