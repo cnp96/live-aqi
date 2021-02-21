@@ -1,6 +1,18 @@
 # Live Air Quality Index (AQI)
 
 Air quality index data visualization for different cities
+
+## Development Duration
+### Day 1
+- [x] Initialize boilerplate
+- [x] Establish socket connection / handle reconnect logic
+- [x] Decide data structures to store the live data
+- [x] Display data in cards UI
+
+### Day 2
+- [x] Restructure the UI with tables instead of cards
+- [x] Update the data structure to accommodate "last updated"
+- [x] Added chart.js library but live chart is yet to be configured
 ## Available Scripts
 
 In the project directory, you can run:
@@ -12,11 +24,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn build`
 
