@@ -80,6 +80,7 @@ export default function App() {
           <div className="chart">
             <React.Suspense fallback="Loading chart...">
               <LineChart label={selectedCity} data={aqiHistory} />
+              <p>Showing a maximum of 20 records</p>
             </React.Suspense>
           </div>
         ) : null}

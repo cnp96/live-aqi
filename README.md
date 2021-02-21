@@ -15,6 +15,12 @@ Live page: https://cnp96.github.io/live-aqi/
 - [x] Restructure the UI with tables instead of cards
 - [x] Update the data structure to accommodate "last updated"
 - [x] Added chart.js library but live chart is yet to be configured
+
+### Day 3
+- [x] Fixed aqi history update using reducer 
+- [x] Added live chart for AQI data per city
+
+> It took approximately 14-15 hours to build the project because I ran into some issues with chart.js
 ## Available Scripts
 
 In the project directory, you can run:
