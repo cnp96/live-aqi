@@ -4,7 +4,7 @@ import { TCityData } from "../../redux/aqiReducer";
 import { formatTime } from "../../util/common";
 export interface AQITableProps {
   data: TCityData;
-  onChange?: (cities: Record<string, boolean>) => void;
+  onChange?: (city: string) => void;
 }
 
 const getCategory = (val: number) => {
@@ -22,8 +22,14 @@ const getCategory = (val: number) => {
 };
 
 const AQITable: React.FC<AQITableProps> = React.memo((props) => {
-  const { data } = props;
+  const [selectedCity, setCity] = React.useState<string>();
 
+  const onCitySelection = (city: string) => {
+    setCity(selectedCity === city ? undefined : city);
+    props.onChange && props.onChange(city);
+  };
+
+  const { data } = props;
   const tdata = Object.entries(data);
 
   return (
@@ -42,13 +48,15 @@ const AQITable: React.FC<AQITableProps> = React.memo((props) => {
           tdata.map(([city, meta], index) => {
             const category = getCategory(meta.aqi);
             return (
-              <tr key={index}>
+              <tr key={index} className={city === selectedCity ? "active" : ""}>
                 <td>{index}</td>
                 <td>{capitalize(city)}</td>
                 <td className={`aqi ${category}`}>{meta.aqi.toFixed(2)}</td>
                 <td>{formatTime(meta.lastUpdated)}</td>
                 <td>
-                  <button>Live chart</button>
+                  <button onClick={() => onCitySelection(city)}>
+                    {selectedCity === city ? "Clear selection" : "Live Chart"}
+                  </button>
                 </td>
               </tr>
             );

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { aqiReducer, IAQIData } from "../../redux/aqiReducer";
 import "./App.scss";
@@ -6,6 +6,7 @@ import AQITable from "./table";
 
 export default function App() {
   const [data, dispatch] = useReducer(aqiReducer, {});
+  const [city, setCity] = useState<string>();
 
   const msgHandler = (msg: IAQIData[]) => {
     dispatch({ type: "update", payload: msg });
@@ -54,7 +55,7 @@ export default function App() {
     <main>
       <h1>Air Quality Index</h1>
       <div className="overview">
-        <AQITable data={data} />
+        <AQITable data={data} onChange={setCity} />
 
         {/* <div className="chart">
           <LineChart labels={Object.keys(compareCities)} data={aqiHistory} />

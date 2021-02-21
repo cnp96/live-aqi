@@ -63,9 +63,9 @@ table.styled-table {
     tr:last-of-type {
       border-bottom: 2px solid #009879;
     }
-    tr.active-row {
+    tr.active {
       font-weight: bold;
-      color: #009879;
+      background: #bfdcae;
     }
     td {
       &.aqi {
