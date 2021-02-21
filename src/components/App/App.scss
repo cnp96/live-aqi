@@ -17,16 +17,17 @@ $black: #000;
     background-position: 0% 50%;
   }
 }
-.app {
+main {
   padding: 1em;
   text-align: center;
   height: 100%;
   .overview {
     display: flex;
     justify-content: center;
-    transition: 300ms ease-in-out;
+    padding: 0 1em;
     .chart {
-      width: 100%;
+      padding: 0 1em;
+      flex-grow: 1;
       height: 100px;
     }
   }
@@ -34,11 +35,10 @@ $black: #000;
 
 table.styled-table {
   border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 600px;
+  min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  transition: 300ms ease-in-out;
   th,
   td {
     padding: 12px 15px;

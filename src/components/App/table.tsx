@@ -1,5 +1,5 @@
-import * as React from "react";
 import { capitalize } from "lodash";
+import * as React from "react";
 
 export interface AQICardProps {
   data: [string, number][];
@@ -20,7 +20,10 @@ const getCategory = (val: number) => {
     : "severe";
 };
 
-type Action = { type: "add"; city: string } | { type: "remove"; city: string };
+type Action =
+  | { type: "add"; city: string }
+  | { type: "remove"; city: string }
+  | { type: "update-bulk"; cities: string[]; checked: boolean };
 type State = Record<string, boolean>;
 function compareReducer(state: State, action: Action): State {
   switch (action.type) {
@@ -28,6 +31,10 @@ function compareReducer(state: State, action: Action): State {
       return { ...state, [action.city]: true };
     case "remove":
       return { ...state, [action.city]: false };
+    case "update-bulk":
+      const newState = { ...state };
+      action.cities.forEach((city) => (newState[city] = action.checked));
+      return newState;
     default:
       return state;
   }
@@ -41,10 +48,13 @@ const AQITable: React.FC<AQICardProps> = React.memo((props) => {
     props.onChange &&
       props.onChange(
         Object.entries(compare)
-          .filter(([city, checked]) => checked)
+          .filter(([_, checked]) => checked)
           .map(([city]) => city)
       );
   }, [compare]);
+
+  const allSelected =
+    data.length > 0 && data.filter(([city]) => !compare[city]).length === 0;
 
   return (
     <table className="styled-table">
@@ -54,7 +64,20 @@ const AQITable: React.FC<AQICardProps> = React.memo((props) => {
           <th>City</th>
           <th>Current AQI</th>
           <th>Level</th>
-          <th>Add to Compare</th>
+          <th>
+            Add to Compare{" "}
+            <input
+              type="checkbox"
+              checked={allSelected}
+              onClick={() =>
+                setCompare({
+                  type: "update-bulk",
+                  cities: data.map(([city]) => city),
+                  checked: !allSelected,
+                })
+              }
+            />
+          </th>
         </tr>
       </thead>
       <tbody>

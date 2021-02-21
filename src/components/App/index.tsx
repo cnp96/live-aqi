@@ -49,7 +49,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app">
+    <main>
       <h1>Air Quality Index</h1>
       <div className="overview">
         <AQITable data={Object.entries(data)} onChange={setCompare} />
@@ -59,6 +59,6 @@ export default function App() {
           </div>
         ) : null}
       </div>
-    </div>
+    </main>
   );
 }
